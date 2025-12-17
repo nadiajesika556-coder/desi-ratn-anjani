@@ -1,0 +1,153 @@
+## 📄 index.html
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar Absen Kelas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Daftar Absen Kelas</h1>
+
+    <label>Nama Siswa</label>
+    <input type="text" id="nama" placeholder="Masukkan nama siswa">
+
+    <label>Status Kehadiran</label>
+    <select id="status">
+      <option value="Hadir">Hadir</option>
+      <option value="Izin">Izin</option>
+      <option value="Sakit">Sakit</option>
+      <option value="Alpha">Alpha</option>
+    </select>
+
+    <button onclick="tambahAbsen()">Tambah Absen</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama</th>
+          <th>Status</th>
+          <th>Tanggal</th>
+        </tr>
+      </thead>
+      <tbody id="tabelAbsen"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+---
+
+## 🎨 style.css
+
+```css
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+button {
+  margin-top: 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: #eee;
+}
+```
+
+---
+
+## ⚙️ script.js
+
+```javascript
+let nomor = 1;
+
+function tambahAbsen() {
+  const nama = document.getElementById('nama').value;
+  const status = document.getElementById('status').value;
+  const tanggal = new Date().toLocaleDateString('id-ID');
+
+  if (nama === '') {
+    alert('Nama tidak boleh kosong');
+    return;
+  }
+
+  const tabel = document.getElementById('tabelAbsen');
+  const row = tabel.insertRow();
+
+  row.insertCell(0).innerText = nomor++;
+  row.insertCell(1).innerText = nama;
+  row.insertCell(2).innerText = status;
+  row.insertCell(3).innerText = tanggal;
+
+  document.getElementById('nama').value = '';
+}
+```
+
+---
+
+## ▶️ Cara Menjalankan
+
+1. Buat 3 file dalam satu folder:
+
+   * `index.html`
+   * `style.css`
+   * `script.js`
+2. Copy kode sesuai namanya.
+3. Buka `index.html` di browser.
+
+Siap digunakan untuk absen kelas 📚
